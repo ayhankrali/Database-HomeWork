@@ -1,0 +1,40 @@
+CREATE TABLE hotels (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  capacity INT,
+  country VARCHAR(100),
+  city VARCHAR(100),
+  street_address VARCHAR(100),
+  phone_number VARCHAR(20)
+);
+
+
+CREATE TABLE room_types (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  type VARCHAR(50)
+);
+
+
+CREATE TABLE rooms (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  room_number VARCHAR(10),
+  floor INT,
+  hotel_id INT,
+  room_type_id INT,
+  view VARCHAR(50),
+  beds INT,
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id),
+  FOREIGN KEY (room_type_id) REFERENCES room_types(id)
+);
+
+
+CREATE TABLE reservations (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  room_id INT,
+  date_in DATE,
+  stays INT,
+  customer_name VARCHAR(100),
+  hotel_id INT,
+  FOREIGN KEY (room_id) REFERENCES rooms(id),
+  FOREIGN KEY (hotel_id) REFERENCES hotels(id)
+);
