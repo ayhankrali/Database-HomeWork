@@ -1,0 +1,29 @@
+
+CREATE TABLE clients (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(15) NOT NULL,
+    last_name VARCHAR(40) NOT NULL,
+    age INT NOT NULL,
+    status VARCHAR(15) DEFAULT 'STANDARD',
+    phone_number VARCHAR(15),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_online TIMESTAMP
+);
+
+INSERT INTO clients (first_name, last_name, age) VALUES
+    ('John', 'Doe', 30),
+    ('Jane', 'Doe', 25),
+    ('Bob', 'Smith', 45),
+    ('Alice', 'Jones', 22),
+    ('Tom', 'Johnson', 50),
+    ('Samantha', 'Brown', 38),
+    ('Mark', 'Taylor', 28),
+    ('Karen', 'Wilson', 35),
+    ('David', 'Lee', 42),
+    ('Emily', 'Clark', 29);
+
+SELECT first_name, last_name FROM clients;
+
+UPDATE clients SET phone_number = '+359888123456' WHERE id = 3;
+
+DELETE FROM clients WHERE id = 10;
